@@ -39,17 +39,6 @@ nim c -d:release dnp.nim
 
 ## Usage
 
-```bash
-Usage:
-   [options]
-
-  -h, --help
-  -d, --domain=DOMAIN        single domain name (default: )
-  -f, --file=FILE            domain names file path (default: )
-  -m, --mode=MODE            choose predictor mode: [default, simple] Possible values: [default, simple] (default: default)
-  -o, --output=OUTPUT        result output path (default: )
-  -s, --silent               eg: dnp -d qq.com -s | ksubdomain -verify -silent | httpx -title -content-length -status-code
-```
 
 ```bash
 ./dnp -h
