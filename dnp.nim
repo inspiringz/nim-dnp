@@ -209,9 +209,6 @@ when isMainModule:
             @@@@@@@@@@@@@@@@@%   
                .@@@@@@@@@@   
 """
-  let current_dir = os.getCurrentDir()
-  var output_path = os.joinPath(current_dir, "results")
-  discard os.existsOrCreateDir(output_path)
 
   let p = newParser:
     help("A simple modernized enterprise domain name predictor and generator")
@@ -234,11 +231,15 @@ when isMainModule:
     predictor_mode = args.mode
     silent_mode = args.silent
 
+  let current_dir = os.getCurrentDir()
+  var output_path = os.joinPath(current_dir, "results")
+  if not silent_mode: discard os.existsOrCreateDir(output_path)
+
   if contains(args.file, '\\') or contains(args.file, '/'):
     input_file = args.file
   else:
     input_file = os.joinPath(current_dir, args.file)
-  
+
   if args.output.len > 0:
     output_path = args.output
   else:
@@ -255,7 +256,9 @@ when isMainModule:
 
   var
     count = 0
-    file: File = open(output_path, fmWrite)
+    file: File 
+  
+  if not silent_mode: file = open(output_path, fmWrite)
 
   if input_name.len > 0:
     var result: seq[string]
@@ -265,7 +268,7 @@ when isMainModule:
       result = get_normal_domain_similar_domain_names(input_name, config)
     for i in result:
       if silent_mode: echo i
-      file.writeLine(i)
+      else: file.writeLine(i)
       count += 1
   else:
     var join_results: seq[string] = @[]
@@ -273,12 +276,12 @@ when isMainModule:
       if(is_main_domain(ns)):
         for i in get_main_domain_similar_domain_names(ns, config):
           if silent_mode: echo i
-          file.writeLine(i)
+          else: file.writeLine(i)
           count += 1
       else:
         for i in get_normal_domain_similar_domain_names(ns, config):
           if silent_mode: echo i
-          file.writeLine(i)
+          else: file.writeLine(i)
           count += 1
   
   file.close()

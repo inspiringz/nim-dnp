@@ -102,7 +102,7 @@ nim c -d:release dnp.nim
 
   目前一个域名在  `simple`  规则下大概生成 **6w—7w** 左右个域名，在  `default`  规则下生成 **26w—29w** 个域名。
 
-  生成完域名后可以用支持完整域名验证的工具去验证域名是否存在，比如使用 [ksubdomain](https://github.com/knownsec/ksubdomain) 命令 `subdomain -f predictor-domains.txt -verify` 。
+  生成完域名后可以用支持完整域名验证的工具去验证域名是否存在，比如使用 [ksubdomain](https://github.com/knownsec/ksubdomain) 命令 `ksubdomain -f predictor-domains.txt -verify` 。
 
 
 
