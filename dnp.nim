@@ -284,6 +284,6 @@ when isMainModule:
           else: file.writeLine(i)
           count += 1
   
-  file.close()
-  
-  if not silent_mode: discard printer(predictor_mode, output_path, begin_time, count)
+  if not silent_mode: 
+    file.close()
+    discard printer(predictor_mode, output_path, begin_time, count)
