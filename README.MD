@@ -1,5 +1,5 @@
 # nim-dnp — domain name predictor
-[![Python 2&3](https://img.shields.io/badge/nim-1.4.0-brightgreen.svg)](https://www.python.org/)
+[![nim](https://img.shields.io/badge/nim-1.4.2-brightgreen.svg)](https://nim-lang.org/)
 
 
 
